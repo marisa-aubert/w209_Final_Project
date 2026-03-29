@@ -104,8 +104,8 @@ body > h3 {
 
 img,
 iframe,
-svg,
-canvas,
+/* svg,
+canvas, */
 .vega-embed {
   display: block;
   margin-left: auto;
