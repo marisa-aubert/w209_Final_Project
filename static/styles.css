@@ -30,6 +30,7 @@ body > h1 {
 }
 
 .subtitle,
+.header-text,
 body > h3 {
   margin: 0 auto 24px;
   max-width: 760px;
