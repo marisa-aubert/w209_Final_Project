@@ -1,125 +1,170 @@
+/* Clean stylesheet for the Observable scrollytelling page */
+
 :root {
-  --ocean-primary: #2a9d8f;
-  --ocean-secondary: #48bfe3;
-  --bg-light: #e6f4f7;
-  --card-bg: rgba(255, 255, 255, 0.78);
-  --text-dark: #12343b;
-  --text-muted: #44646b;
+  --bg-page: #031521;
+  --bg-panel: #07263b;
+  --bg-panel-2: #041b2b;
+  --border-soft: rgba(168, 184, 200, 0.18);
+  --text-main: #d9e4ef;
+  --text-muted: #9cb2c7;
+  --title-accent: #f0dfb0;
+  --link: #9fc5f8;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: "Inter", Arial, sans-serif;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: linear-gradient(to bottom, #d9efee 0%, #cfe7f0 45%, #e6f4f7 100%);
-  color: var(--text-dark);
+  overflow: hidden;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  opacity: 0.9;
 }
 
 .page-header {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px 32px;
   text-align: center;
-  padding: 120px 20px 40px;
 }
 
 .page-header h1,
 body > h1 {
-  margin: 0 0 12px;
-  color: var(--ocean-primary);
-  font-size: 3rem;
+  margin: 0 0 14px;
+  color: var(--title-accent);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  text-align: center;
 }
 
-.subtitle, 
+.subtitle,
 .header-text,
 body > h3 {
-  margin: 0 auto 24px;
-  max-width: 760px;
-  font-size: 1.08rem;
-  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 20px;
   color: var(--text-muted);
-  font-weight: 400;
-  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .page-container {
-  width: min(1080px, 92%);
-  margin: 0 auto;
-  padding-bottom: 56px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
+.scroller {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section,
 .viz-section {
-  margin: 36px auto 52px;
-  padding: 28px 28px 32px;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 22px;
-  box-shadow: 0 12px 32px rgba(26, 64, 74, 0.12);
-  backdrop-filter: blur(6px);
-  text-align: center;
-}
-
-.viz-section h1,
-.viz-section h2,
-body > h2,
-body > h3 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: var(--text-dark);
-}
-
-.viz-section h1,
-.viz-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.viz-section p {
-  text-align: center;
-}
-
-.viz-inner {
-  background: #f2f4f5;
-  border-radius: 16px;
-  padding: 20px 18px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-
-.image-stack {
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
-  flex-direction: column;
-  gap: 28px;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin: 0 auto;
+  padding: 24px;
 }
 
-.image-stack img {
+.snap-card,
+.viz-inner {
+  width: min(1320px, 96vw);
+  min-height: min(92vh, 980px);
+  background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-panel-2) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  padding: 0;
+}
+
+.section-frame {
+  width: 100%;
+  height: min(90vh, 920px);
+  border: 0;
   display: block;
-  margin: 0 auto;
+  background: transparent;
+}
+
+.observable-host {
+  width: 100%;
+  min-height: min(90vh, 920px);
+  padding: 0;
+}
+
+.observable-host > * {
   max-width: 100%;
-  height: auto;
 }
 
 img,
 iframe,
-/* svg,
-canvas, */
+svg,
+canvas,
 .vega-embed {
   display: block;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
 }
 
-.vega-embed,
 #vis,
 [id^="observablehq-"] {
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 hr {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .page-header {
+    padding: 44px 18px 24px;
+  }
+
+  .subtitle,
+  .header-text,
+  body > h3 {
+    font-size: 0.98rem;
+  }
+
+  .snap-section,
+  .viz-section {
+    padding: 14px;
+  }
+
+  .snap-card,
+  .viz-inner {
+    width: 100%;
+    min-height: 94vh;
+    border-radius: 18px;
+  }
+
+  .section-frame,
+  .observable-host {
+    min-height: 88vh;
+  }
 }
