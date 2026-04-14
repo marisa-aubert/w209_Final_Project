@@ -318,13 +318,20 @@
                 </script>
           </div>
         </section>
-<!-- 
+
         <section class="story-panel" id="references">
           <div class="panel-card">
-            <div class="panel-topbar"><a class="panel-link" href="https://observablehq.com/d/6b3cc6ce29661635" target="_blank" rel="noopener noreferrer">Open notebook in Observable</a></div>
-            <div class="observable-root-wrap"><div id="obs-references" class="observable-root"><div class="loading">Loading references…</div></div></div>
+            <div id="observablehq-ReferenceSection-1f28ef43"></div>
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+              <script type="module">
+              import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+              import define from "https://api.observablehq.com/d/6b3cc6ce29661635.js?v=4";
+              new Runtime().module(define, name => {
+                if (name === "ReferenceSection") return new Inspector(document.querySelector("#observablehq-ReferenceSection-1f28ef43"));
+              });
+              </script>
           </div>
-        </section> -->
+        </section>
       </main>
     </div>
   </div>
