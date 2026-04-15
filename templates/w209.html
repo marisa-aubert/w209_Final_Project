@@ -184,19 +184,19 @@
     /* Sticky jump navigation */
     .section-nav {
       position: fixed;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
       z-index: 1200;
-      width: min(1180px, calc(100vw - 32px));
+      width: 220px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      padding: 12px 18px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      padding: 14px;
       background: rgba(4, 26, 43, 0.84);
       border: 1px solid rgba(170, 196, 217, 0.18);
-      border-radius: 999px;
+      border-radius: 24px;
       backdrop-filter: blur(10px);
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
     }
@@ -205,22 +205,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 15px;
+      width: 100%;
+      padding: 10px 14px;
       border-radius: 999px;
       text-decoration: none;
+      text-align: center;
       color: var(--text);
       background: rgba(159, 197, 248, 0.1);
       border: 1px solid rgba(159, 197, 248, 0.18);
       font-size: 0.92rem;
       font-weight: 500;
-      line-height: 1.1;
-      white-space: nowrap;
+      line-height: 1.15;
+      white-space: normal;
       transition: background 180ms ease, transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
     .section-nav a:hover {
       opacity: 1;
-      transform: translateY(-1px);
+      transform: translateX(2px);
       background: rgba(159, 197, 248, 0.18);
       border-color: rgba(159, 197, 248, 0.3);
     }
@@ -230,11 +232,17 @@
       color: #031522;
       border-color: rgba(240, 223, 176, 0.95);
       box-shadow: 0 0 14px rgba(240, 223, 176, 0.45);
-      transform: translateY(-1px) scale(1.03);
+      transform: translateX(2px) scale(1.01);
+    }
+
+    .scroller {
+      padding-left: 258px;
     }
 
     .page-shell {
-      padding-top: 92px;
+      width: min(var(--maxw), calc(100vw - 320px));
+      margin: 0 auto;
+      padding-top: 24px;
     }
 
     #coral-comparison,
@@ -253,11 +261,16 @@
     @media (max-width: 900px) {
       .section-nav {
         top: 10px;
-        width: calc(100vw - 20px);
+        left: 10px;
+        right: 10px;
+        transform: none;
+        width: auto;
         padding: 10px 12px;
         gap: 8px;
         border-radius: 18px;
         justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -265,11 +278,18 @@
 
       .section-nav a {
         flex: 0 0 auto;
+        width: auto;
+        white-space: nowrap;
         font-size: 0.88rem;
         padding: 8px 12px;
       }
 
+      .scroller {
+        padding-left: 0;
+      }
+
       .page-shell {
+        width: min(var(--maxw), calc(100vw - 24px));
         padding-top: 84px;
       }
     }
