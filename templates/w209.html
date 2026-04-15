@@ -179,6 +179,101 @@
       }
       .panel-topbar { padding-bottom: 10px; }
     }
+
+
+    /* Sticky jump navigation */
+    .section-nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1200;
+      width: min(1180px, calc(100vw - 32px));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 18px;
+      background: rgba(4, 26, 43, 0.84);
+      border: 1px solid rgba(170, 196, 217, 0.18);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .section-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 15px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(159, 197, 248, 0.1);
+      border: 1px solid rgba(159, 197, 248, 0.18);
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1.1;
+      white-space: nowrap;
+      transition: background 180ms ease, transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .section-nav a:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      background: rgba(159, 197, 248, 0.18);
+      border-color: rgba(159, 197, 248, 0.3);
+    }
+
+    .section-nav a.active-link {
+      background: rgba(240, 223, 176, 0.95);
+      color: #031522;
+      border-color: rgba(240, 223, 176, 0.95);
+      box-shadow: 0 0 14px rgba(240, 223, 176, 0.45);
+      transform: translateY(-1px) scale(1.03);
+    }
+
+    .page-shell {
+      padding-top: 92px;
+    }
+
+    #coral-comparison,
+    #temp-hexbin,
+    #temp-boxplot,
+    #dhw-chart,
+    #bleaching-over-time,
+    #world-map,
+    #oceans-most-affected,
+    #references-embed,
+    #weak-relationships,
+    #references-list {
+      scroll-margin-top: 110px;
+    }
+
+    @media (max-width: 900px) {
+      .section-nav {
+        top: 10px;
+        width: calc(100vw - 20px);
+        padding: 10px 12px;
+        gap: 8px;
+        border-radius: 18px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .section-nav a {
+        flex: 0 0 auto;
+        font-size: 0.88rem;
+        padding: 8px 12px;
+      }
+
+      .page-shell {
+        padding-top: 84px;
+      }
+    }
+
   </style>
 </head>
 <body>

@@ -326,3 +326,8 @@ hr {
     padding-top: 84px;
   }
 }
+
+
+/* Nav spacing tune */
+.section-nav { justify-content: center; gap: 12px; }
+.section-nav a { white-space: nowrap; }
