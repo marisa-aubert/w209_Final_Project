@@ -182,6 +182,18 @@
   </style>
 </head>
 <body>
+
+  <nav class="section-nav" aria-label="Visualization navigation">
+    <a href="#coral-comparison" data-target="coral-comparison">Coral Comparison</a>
+    <a href="#temp-hexbin" data-target="temp-hexbin">Sea Temp</a>
+    <a href="#temp-boxplot" data-target="temp-boxplot">Sea Temp 2</a>
+    <a href="#dhw-chart" data-target="dhw-chart">Degree Heating Weeks</a>
+    <a href="#bleaching-over-time" data-target="bleaching-over-time">Bleaching Over Time</a>
+    <a href="#world-map" data-target="world-map">World Map</a>
+    <a href="#oceans-most-affected" data-target="oceans-most-affected">Oceans Most Affected</a>
+    <a href="#weak-relationships" data-target="weak-relationships">Weak Relationships</a>
+    <a href="#references-list" data-target="references-list">References</a>
+  </nav>
   <div class="scroller">
     <div class="page-shell">
       <header class="hero">
@@ -305,7 +317,7 @@
           </div>
         </section>
 
-        <section class="story-panel" id="references">
+        <section class="story-panel" id="references-embed">
           <div class="panel-card">
             <div id="observablehq-ReferenceSection-1f28ef43"></div>
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
@@ -333,7 +345,7 @@
             </div>
         </section>
 
-        <section class="story-panel" id="references">
+        <section class="story-panel" id="references-list">
             <div class="hero-card">
               <h2 style="margin: 0 0 18px; font-family: 'Playfair Display', Georgia, serif;
                 font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--title); line-height: 1.1;">
@@ -428,6 +440,56 @@
     mountNamedCells(defineRef, {
       ReferenceSection: "#obs-references"
     });
+  </script>
+
+  <script>
+    const scroller = document.querySelector(".scroller");
+    const storySections = Array.from(document.querySelectorAll(".hero, .story-panel"));
+
+    function updatePanelStates() {
+      const viewportCenter = window.innerHeight / 2;
+      let activeIndex = 0;
+      let bestDistance = Infinity;
+
+      storySections.forEach((section, index) => {
+	const rect = section.getBoundingClientRect();
+	const sectionCenter = rect.top + rect.height / 2;
+	const distance = Math.abs(sectionCenter - viewportCenter);
+
+	if (distance < bestDistance) {
+	  bestDistance = distance;
+	  activeIndex = index;
+	}
+      });
+
+      storySections.forEach((section, index) => {
+	section.classList.remove("is-active", "is-prev", "is-next");
+
+	if (index === activeIndex) {
+	  section.classList.add("is-active");
+	} else if (index < activeIndex) {
+	  section.classList.add("is-prev");
+	} else {
+	  section.classList.add("is-next");
+	}
+      });
+
+      const navLinks = document.querySelectorAll(".section-nav a");
+      navLinks.forEach(link => link.classList.remove("active-link"));
+
+      const activeSection = storySections[activeIndex];
+      if (activeSection && activeSection.id) {
+        const activeLink = document.querySelector(`.section-nav a[data-target="${activeSection.id}"]`);
+        if (activeLink) activeLink.classList.add("active-link");
+      }
+    }
+
+    if (scroller) {
+      scroller.addEventListener("scroll", updatePanelStates, { passive: true });
+      window.addEventListener("resize", updatePanelStates);
+      window.addEventListener("load", updatePanelStates);
+      requestAnimationFrame(() => requestAnimationFrame(updatePanelStates));
+    }
   </script>
 </body>
 </html>
