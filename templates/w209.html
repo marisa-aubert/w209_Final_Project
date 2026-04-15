@@ -321,6 +321,21 @@
 </head>
 <body>
 
+  <audio loop id="bg-audio">
+  <source src="../static/audio/482167__tim_verberne__underwater-ambience.wav" type="audio/wav">
+</audio>
+
+<script>
+  const audio = document.getElementById('bg-audio');
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script>
+
   <nav class="section-nav" aria-label="Visualization navigation">
     <a href="#about" data-target="about">About</a>
     <a href="#coral-comparison" data-target="coral-comparison">Coral Comparison</a>
@@ -352,9 +367,19 @@
             a comprehensive dataset with more than 40,000 observations of corals and surrounding environmental conditions between 1980 and 2020<sup>[3]</sup>. Our goal 
             is to translate this data into clear, interactive visuals that inform and engage a broad audience, including the general public, conservationists, 
             and marine scientists working to protect coral ecosystems.</p>
-          <p class ="intro">
+          <p class="intro">
             Scroll down to move through the visualizations; each section presents a different interactive visual and built-in summary. 
-            We also recommend that you expand your browser window to <b>full screen</b>.</p>
+            We also recommend that you expand your browser window to <b>full screen</b> and 
+            <button onclick="toggleAudio()" id="audio-toggle" style="
+              background: none;
+              border: none;
+              color: #c8dcf0;
+              text-decoration: underline;
+              cursor: pointer;
+              font-family: 'IBM Plex Sans', sans-serif;
+              font-size: 1rem;
+              padding: 0;">click here to add underwater audio </button> 🔊.
+          </p>
         </div>
       </header>
 
