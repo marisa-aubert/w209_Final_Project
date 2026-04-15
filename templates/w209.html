@@ -67,7 +67,7 @@
       scroll-snap-stop: always;
       display: flex;
       align-items: center;
-      padding: 24px 0;
+      /* padding: 24px 0; */
     }
 
     .hero-card,
@@ -180,6 +180,17 @@
       .panel-topbar { padding-bottom: 10px; }
     }
 
+    /* .hero-card,
+    .panel-card {
+    zoom: 1.00;
+    } */
+    /* #world-map .panel-card {
+    zoom: 0.95;
+    }
+
+    #weak-relationships .panel-card {
+    zoom: 0.95;
+    } */
 
     /* Sticky jump navigation */
     .section-nav {
@@ -245,17 +256,18 @@
       padding-top: 24px;
     }
 
-    #coral-comparison,
-    #temp-hexbin,
-    #temp-boxplot,
-    #dhw-chart,
-    #bleaching-over-time,
-    #world-map,
-    #oceans-most-affected,
-    #references-embed,
-    #weak-relationships,
+    #coral-comparison {align-items: flex-start;},
+    #temp-hexbin {align-items: center;},
+    #temp-boxplot {align-items: center;},
+    #dhw-chart {align-items: center;},
+    #bleaching-over-time {align-items: flex-start;},
+    #world-map {align-items: center;},
+    #oceans-most-affected {align-items: center;},
+    #references-embed {align-items: flex-start;},
+    #weak-relationships {align-items: center;},
     #references-list {
-      scroll-margin-top: 110px;
+      {align-items: center;
+        scroll-margin-top: 0px;
     }
 
     @media (max-width: 900px) {
@@ -299,19 +311,21 @@
 <body>
 
   <nav class="section-nav" aria-label="Visualization navigation">
+    <a href="#about" data-target="about">About</a>
     <a href="#coral-comparison" data-target="coral-comparison">Coral Comparison</a>
     <a href="#temp-hexbin" data-target="temp-hexbin">Sea Temp</a>
-    <a href="#temp-boxplot" data-target="temp-boxplot">Sea Temp 2</a>
+    <a href="#temp-boxplot" data-target="temp-boxplot">Sea Temp (cont.)</a>
     <a href="#dhw-chart" data-target="dhw-chart">Degree Heating Weeks</a>
     <a href="#bleaching-over-time" data-target="bleaching-over-time">Bleaching Over Time</a>
     <a href="#world-map" data-target="world-map">World Map</a>
     <a href="#oceans-most-affected" data-target="oceans-most-affected">Oceans Most Affected</a>
+    <a href="#references-embed" data-target="references-embed">Bleaching by Latitude</a>
     <a href="#weak-relationships" data-target="weak-relationships">Weak Relationships</a>
     <a href="#references-list" data-target="references-list">References</a>
   </nav>
   <div class="scroller">
     <div class="page-shell">
-      <header class="hero">
+      <header class="hero" id="about">
         <div class="hero-card">
           <h1>Coral Bleaching</h1>
           <p class="subtitle">Visualizing spatiotemporal data on coral bleaching and associated environmental factors</p>
@@ -322,14 +336,14 @@
             for their extraordinary biodiversity. Yet today, these ecosystems are under severe threat. Rising ocean temperatures, driven by climate change, 
             are causing widespread coral bleaching, a phenomenon in which corals expel the symbiotic algae that give them color and life. 
             What remains are ghostly white skeletons, signaling stress and the potential for coral death. 
-            Studies now estimate that over 50% of the world’s corals have died since 1950 <sup>[1]</sup>and over 80% have experienced heat stress.<sup>[2]</sup></p>
+            Studies now estimate that over 50% of the world’s corals have died since 1950 <sup>[1]</sup> and over 80% have experienced heat stress.<sup>[2]</sup></p>
           <p class="intro">This project explores coral bleaching through interactive data visualizations built from the BCO-DMO coral bleaching environmental dataset, 
             a comprehensive dataset with more than 40,000 observations of corals and surrounding environmental conditions between 1980 and 2020<sup>[3]</sup>. Our goal 
             is to translate this data into clear, interactive visuals that inform and engage a broad audience, including the general public, conservationists, 
             and marine scientists working to protect coral ecosystems.</p>
           <p class ="intro">
             Scroll down to move through the visualizations; each section presents a different interactive visual and built-in summary. 
-            We also recommend that you expend your browser window to <b>full screen</b></p>
+            We also recommend that you expend your browser window to <b>full screen</b>.</p>
         </div>
       </header>
 
@@ -446,7 +460,7 @@
           </div>
         </section>
 
-                <section class="story-panel" id="weak-relationships">
+        <section class="story-panel" id="weak-relationships">
           <div class="panel-card">
           <div id="observablehq-relations-2fcec6b3"></div>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
