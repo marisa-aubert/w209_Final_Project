@@ -269,12 +269,17 @@
     #bleaching-over-time {align-items: flex-start;},
     #world-map {align-items: center;},
     #oceans-most-affected {align-items: center;},
-    #references-embed {align-items: flex-start;},
+    #references-embed {align-items: flex-start;
+  padding-bottom: 100px;},
     #weak-relationships {align-items: center;},
     #references-list {
-      {align-items: center;
+      align-items: center;
         scroll-margin-top: 0px;
     }
+
+    #references-embed .panel-card {
+  margin-bottom: 60px;
+}
 
     @media (max-width: 900px) {
       .section-nav {
@@ -427,6 +432,7 @@
         <section class="story-panel" id="world-map">
           <div class="panel-card">
             <div id="observablehq-worldmap2-bc2a17b1"></div>
+
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
               <script type="module">
               import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
